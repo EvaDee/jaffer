@@ -28,4 +28,5 @@ public class TestController {
         System.out.println("sessionBean is :" + sessionBean);
         return sessionBean.toString();
     }
+
 }
