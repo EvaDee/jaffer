@@ -13,4 +13,12 @@ public class LogUtils{
 //        LoggerFactory.getLogger(o.getClass()).info(msg);
         System.out.println(msg);
     }
+
+    public static void sout(String prefix, String msg) {
+            System.out.println(prefix + " : " + msg);
+    }
+
+    public static void sout(String msg) {
+        System.out.println(msg);
+    }
 }

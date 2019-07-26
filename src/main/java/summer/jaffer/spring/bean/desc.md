@@ -57,4 +57,5 @@ ApplicationContextAware：setApplicationContext(ApplicationContext context)方�
 是有singleTon作用域的bean的生命周期由spring维护。
 ### Reference
 https://zhuanlan.zhihu.com/p/52537298
+
 https://www.cnblogs.com/zrtqsk/p/3735273.html
