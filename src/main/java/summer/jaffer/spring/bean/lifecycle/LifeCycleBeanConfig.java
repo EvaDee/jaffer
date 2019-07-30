@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import summer.jaffer.log.LogUtils;
 
-@Configuration
+//@Configuration
 public class LifeCycleBeanConfig {
 
     @Bean(name = "signleBeanTmp", initMethod = "init", destroyMethod = "selfDestroy")
