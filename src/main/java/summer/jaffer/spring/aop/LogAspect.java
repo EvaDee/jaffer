@@ -14,6 +14,7 @@ import java.lang.reflect.Parameter;
 /**
  * 简单log AOP
  * 实现打印所有加@Log注解的方法的参数的打印
+ * 切点、通知、连接点、切面、织入概念见序号1-5
  * 5.整个AOP代理对象加载到内存的过程为"织入"
  */
 @Component
@@ -23,8 +24,12 @@ public class LogAspect {
     @Pointcut("@annotation(summer.jaffer.spring.aop.Log)") // 1.定义"切点"为加注解Log的地方
     public void logPointCut() {}
 
+    /**
+     * 创建环绕通知
+     * @param jp ProceedingJoinPoint is only supported for around advice
+     */
     @Around("logPointCut()") // 2.创建环绕"通知"
-    public void methodLog(ProceedingJoinPoint jp) { // 3.jp为"连接点"
+    public void methodLog(ProceedingJoinPoint jp) { // 3.jp为"连接点"，由jp可以获取被调用方法签名和实际参数，由方法签名可以通过反射获取该方法的Method
         try{
             MethodSignature signature = (MethodSignature) jp.getSignature();
             Method method = jp.getTarget().getClass().getMethod(signature.getName(), signature.getParameterTypes());
