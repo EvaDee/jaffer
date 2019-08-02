@@ -74,4 +74,50 @@ public class Sort8Algorithm {
         }
         return arr;
     }
+
+    /**
+     * 选择排序
+     * 1.堆排序
+     * @param arr
+     * @return
+     */
+    public static int[] heapSort(int[] arr) {
+        if (arr == null || arr.length == 0) return arr;
+        int n = arr.length;
+        for (int i = (n -2 ) / 2; i >= 0; i--) {
+            shiftDown(arr, i, n);
+        }
+        for (int i = n - 1; i > 0; i--) {
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+            shiftDown(arr, 0, i -1);
+        }
+        return arr;
+    }
+
+    /**
+     * 调整最大堆
+     * 把堆顶到叶节点的路径看成单链表进行操作
+     * @param arr
+     * @param start
+     * @param end
+     */
+    public static void shiftDown(int[] arr, int start, int end) {
+        int parent = start; // 链表头结点
+        int temp = arr[start]; // 头结点值
+        int j = start * 2 + 1; // 游标指针指向头结点的下一个节点，即左孩子
+        while (j <= end ) { // 游标指针结束条件
+            if (j < end && arr[j] < arr[j + 1]) j = j+ 1; // 找出最大子孩子
+            if (arr[j] <= arr[parent]) { // 父节点最大则停止迭代
+                break;
+            } else { // 更新
+                arr[parent] = arr[j];
+                parent = j;
+                j = 2 * j + 1;
+            }
+        }
+        // 找到该值的节点后赋值
+        arr[parent] = temp;
+    }
 }
